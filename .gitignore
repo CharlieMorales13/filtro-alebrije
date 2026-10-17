@@ -5,3 +5,4 @@ Thumbs.db
 .wrangler/
 *.log
 __pycache__/
+*.blend1
