@@ -11,7 +11,7 @@ const DEMO = PARAMS.has('demo');
 const IMAGEN = PARAMS.get('imagen'); // ?imagen=foto.jpg: prueba con una foto en lugar de la cámara
 const SUAVIZADO = 0.65; // 1 = sin suavizado; menor = menos temblor pero más retraso
 
-// Tintes que se alternan al subir las cejas (multiplican la textura del alebrije).
+// Tintes que se alternan al subir las cejas (multiplican la textura de la máscara).
 const TINTES = [0xffffff, 0xff9ec7, 0x8ff5ea, 0xffe066, 0xc9a7ff];
 const CONFETI = [0xf21a73, 0x00b3a6, 0xffc700, 0xff5a00, 0x5acc26, 0x7326bf];
 
@@ -39,19 +39,18 @@ cara.add(mascara);
 
 let mixer = null;
 let piel = null;
-let iris = null;
 let tinte = 0;
 let pulso = 0;
 let destello = 0;
 const particulas = [];
 const reloj = new THREE.Clock();
 
-new GLTFLoader().load('assets/mascara_alebrije.glb', gltf => {
+new GLTFLoader().load('assets/mascara_zorro.glb', gltf => {
   mascara.add(gltf.scene);
   gltf.scene.traverse(o => {
-    if (o.material?.name === 'piel_alebrije') piel = o.material;
-    if (o.material?.name === 'iris') iris = o.material;
+    if (o.material?.name === 'piel') piel = o.material;
   });
+  piel?.emissive.setHex(0xffc700);
   mixer = new THREE.AnimationMixer(gltf.scene);
   gltf.animations.forEach(clip => mixer.clipAction(clip).play());
 });
@@ -66,19 +65,19 @@ const disparadores = {
 const REACCIONES = {
   boca() { // rugido: confeti desde la boca + pulso
     pulso = 1;
-    emitir(new THREE.Vector3(0, -5, 10), 90, CONFETI, 50);
+    emitir(new THREE.Vector3(0, -6, 9), 90, CONFETI, 50);
     sfx('rugido');
   },
-  cejas() { // cambia los colores del alebrije
+  cejas() { // cambia los colores de la máscara
     tinte = (tinte + 1) % TINTES.length;
     piel?.color.setHex(TINTES[tinte]);
-    emitir(new THREE.Vector3(0, 9, 5), 30, [TINTES[tinte] === 0xffffff ? 0xffc700 : TINTES[tinte]], 25);
+    emitir(new THREE.Vector3(0, 12, 4), 30, [TINTES[tinte] === 0xffffff ? 0xffc700 : TINTES[tinte]], 25);
     sfx('colores');
   },
-  ojos() { // ojos que brillan con chispas
+  ojos() { // la máscara destella en dorado y salen chispas de los ojos
     destello = 1;
-    emitir(new THREE.Vector3(-3.4, 2.9, 9), 15, [0xffffff, 0xffc700], 20);
-    emitir(new THREE.Vector3(3.4, 2.9, 9), 15, [0xffffff, 0xffc700], 20);
+    emitir(new THREE.Vector3(-3.2, 2.6, 7), 15, [0xffffff, 0xffc700], 20);
+    emitir(new THREE.Vector3(3.2, 2.6, 7), 15, [0xffffff, 0xffc700], 20);
     sfx('brillo');
   },
 };
@@ -156,7 +155,7 @@ function animar(dt) {
   pulso = Math.max(0, pulso - dt * 2.5);
   mascara.scale.setScalar(1 + 0.12 * Math.sin(pulso * Math.PI));
   destello = Math.max(0, destello - dt * 1.5);
-  if (iris) iris.emissiveIntensity = 1 + destello * 8;
+  if (piel) piel.emissiveIntensity = destello * 0.6;
   actualizarParticulas(dt);
   renderer.render(scene, camera);
 }
