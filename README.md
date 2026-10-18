@@ -80,7 +80,7 @@ blender/                      script y .blend fuente
 | Recurso | Autor / fuente | Licencia |
 |---|---|---|
 | Código, ajuste, esqueleto y animación de la máscara | Carlos Antonio Gómez Morales | MIT (ver `LICENSE`) |
-| Modelo base de la máscara (prompt propio) | Generado con [Meshy AI](https://www.meshy.ai) | Según los términos de Meshy (CC BY 4.0 en el plan gratuito) |
+| Modelo base de la máscara (prompt propio) | Generado con [Meshy AI](https://www.meshy.ai), plan gratuito | CC BY 4.0 |
 | Efectos de sonido | Sintetizados en código, autoría propia | MIT |
 | MediaPipe Tasks Vision y modelo Face Landmarker | Google | Apache 2.0 |
 | three.js | three.js authors | MIT |
