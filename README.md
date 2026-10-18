@@ -4,6 +4,8 @@ Filtro facial de **realidad aumentada** para el navegador del teléfono. Al abri
 
 > Actividad 2 · Realidad Virtual y Aumentada · 2026
 
+**Pruébalo:** https://filtro-alebrije.carlos-gomez-dev13.workers.dev/ · **Modo demo en PC:** https://filtro-alebrije.carlos-gomez-dev13.workers.dev/?demo
+
 | Máscara animada | Reacción a "abre la boca" |
 |---|---|
 | ![Máscara](docs/capturas/mascara.png) | ![Rugido](docs/capturas/rugido.png) |
@@ -53,7 +55,7 @@ blender --background --python blender/mascara_zorro.py -- <zorro_meshy.glb>
 ## Instalación y uso
 
 ```bash
-git clone <url-del-repo> && cd 02-filtro-alebrije
+git clone https://github.com/CharlieMorales13/filtro-alebrije.git && cd filtro-alebrije
 npx serve .
 ```
 

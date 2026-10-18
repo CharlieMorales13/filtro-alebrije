@@ -33,7 +33,7 @@ Hacer un filtro de RA que, al abrir la app, detecte el rostro con la cámara fro
 Un filtro web que abre directo en la cámara, cubre toda la cara, sigue los giros de la cabeza y responde a tres gestos. Me dejó claro cuánto trabajo hay detrás de un filtro "sencillo" de Instagram.
 
 🎥 [video / GIF aquí]
-💻 Repositorio: https://github.com/TU-USUARIO/02-filtro-alebrije
-🔗 Pruébalo: https://TU-URL
+💻 Repositorio: https://github.com/CharlieMorales13/filtro-alebrije
+🔗 Pruébalo: https://filtro-alebrije.carlos-gomez-dev13.workers.dev/
 
 #RealidadAumentada #Blender #MediaPipe #threejs #Oaxaca #Alebrijes #Meshy #FiltrosAR
