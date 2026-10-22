@@ -6,9 +6,9 @@ Filtro facial de **realidad aumentada** para el navegador del teléfono. Al abri
 
 **Pruébalo:** https://filtro-alebrije.carlos-gomez-dev13.workers.dev/ · **Modo demo en PC:** https://filtro-alebrije.carlos-gomez-dev13.workers.dev/?demo
 
-| Máscara animada | Reacción a "abre la boca" |
-|---|---|
-| ![Máscara](docs/capturas/mascara.png) | ![Rugido](docs/capturas/rugido.png) |
+| Máscara animada | Reacción a "abre la boca" | Esqueleto en Blender |
+|---|---|---|
+| ![Máscara](docs/capturas/mascara.png) | ![Rugido](docs/capturas/rugido.png) | ![Esqueleto](docs/capturas/esqueleto.png) |
 
 ## Gestos
 
@@ -36,6 +36,8 @@ Para regenerarla, con el GLB de Meshy descargado:
 ```bash
 blender --background --python blender/mascara_zorro.py -- <zorro_meshy.glb>
 ```
+
+La imagen del esqueleto (`docs/capturas/esqueleto.png`) se genera con `blender -b blender/mascara_zorro.blend -P blender/render_esqueleto.py -- esqueleto.png`: cada hueso se dibuja como una varilla de color sobre la máscara semitransparente.
 
 ## Cómo funciona
 
